@@ -9,6 +9,8 @@ El deploy en Render del modelo de ML no se pudo realizar ya que se esta utilizan
 
 El codigo en Python fue ejecutado en Google Colab por falta de capacidad en la maquina local. Se esta utilizando la version gratuita de Colab por lo que para realizar el modelo de machine learning se tuvo que filtrar el dataset movies por peliculas realizadas en Estados Unidos asi Colab no colapsaba al realizar el procesamiento de lenguaje natural.
 
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.itmastersmag.com%2Fnoticias-analisis%2Fcuatro-aplicaciones-de-ia-y-machine-learning-en-mexico%2F&psig=AOvVaw0EW0xGMC1fCGyDqxxa5-yX&ust=1684290756145000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJirzJPm-P4CFQAAAAAdAAAAABAE
+
 
 # Tranformaciones
 
@@ -20,6 +22,9 @@ La columna release_date se cambio a formato fecha AAAA-mm-dd y se creo la column
 Secreo la columna return dividiendo revenue / budget, cuando no hay datos disponibles para calcularlo se toma el valor 0.
 Se eliminaron las columnas que no serán utilizadas, video,imdb_id,adult,original_title,vote_count,poster_path y homepage
 Una vez realizadas estas tranformaciones se guardo el nuevo dataset en Dropbox como .csv
+
+<img width="1438" alt="Captura de pantalla 2023-05-15 a la(s) 23 31 31" src="https://github.com/melisatirabassi/prueba/assets/124107756/3135f1e7-715e-4047-8195-870a63aad216">
+
 
 
   # Fastapi
@@ -39,6 +44,9 @@ En la ubicacion del archivo main.py en la maquina local se creo un archivo Docke
 Los archivos Dockerfile, main.py y requirements.txt se cargan en el repositorio publico labs1. Se creo un usuario en render.com y se pocedio a crear una Web Service desde el repositorio publico de GitHub (Docker).
 https://movie-etl.onrender.com/docs
 
+<img width="1290" alt="Captura de pantalla 2023-05-15 a la(s) 23 28 30" src="https://github.com/melisatirabassi/prueba/assets/124107756/561654b4-8a2f-4978-8ead-1700ed4b13b2">
+
+
 
 # Modelo de Machine Learning
 
@@ -54,6 +62,8 @@ Se concateno la matriz obtenida luego del procesamiento de la columna 'title' co
 Se genero un modelo de similitud con cosine_similarity
 Se guardo la matriz de similitud en Dropbox
 
+<img width="1430" alt="Captura de pantalla 2023-05-15 a la(s) 23 25 42" src="https://github.com/melisatirabassi/prueba/assets/124107756/ce6faaee-3910-4262-aaee-696afc694482">
+
 
   # Fastapi
 
@@ -61,10 +71,14 @@ Con el dataset tranformado y el modelo de ML en Dropbox se creo una API con Fast
 def recomendacion('titulo'): '''Ingresas un nombre de pelicula y te recomienda las similares en una lista de 5 valores''' return {'lista recomendada': respuesta}
 La lista que esta retornando la API es de 6 valores, ya que incluye la pelicula ingresada.
 
+<img width="1292" alt="Captura de pantalla 2023-05-15 a la(s) 23 22 48" src="https://github.com/melisatirabassi/prueba/assets/124107756/19a3a137-afaf-4959-bdf4-455b7b3f6898">
+
+
 
   # Render
   
 En la ubicacion del archivo main.py en la maquina local se creo un archivo Dockerfile (sin extension), un entorno virtual (myenv) donde se instalaron las librerias que utiliza la API (pandas, numpy, requests, uvicorn, Fastapi, joblib, etc) y luego se genero el archivo requirements.txt haciendo freeze de myenv.
 Los archivos Dockerfile, main.py y requirements.txt se cargan en el repositorio publico labs1_ML. Se creo un usuario en render.com y se pocedio a crear una Web Service desde el repositorio publico de GitHub (Docker). El deploy fallo por falta de memoria ya que se esta utilizando la version gratuita de 512MB.
+
 <img width="1411" alt="Captura de pantalla 2023-05-15 a la(s) 22 54 04" src="https://github.com/melisatirabassi/prueba/assets/124107756/e5c8b514-e69f-44f9-a2df-5f53af6c625c">
 
