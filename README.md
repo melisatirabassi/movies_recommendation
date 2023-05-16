@@ -9,7 +9,8 @@ El deploy en Render del modelo de ML no se pudo realizar ya que se esta utilizan
 
 El codigo en Python fue ejecutado en Google Colab por falta de capacidad en la maquina local. Se esta utilizando la version gratuita de Colab por lo que para realizar el modelo de machine learning se tuvo que filtrar el dataset movies por peliculas realizadas en Estados Unidos asi Colab no colapsaba al realizar el procesamiento de lenguaje natural.
 
-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.itmastersmag.com%2Fnoticias-analisis%2Fcuatro-aplicaciones-de-ia-y-machine-learning-en-mexico%2F&psig=AOvVaw0EW0xGMC1fCGyDqxxa5-yX&ust=1684290756145000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJirzJPm-P4CFQAAAAAdAAAAABAE
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.itmastersmag.com%2Fnoticias-analisis%2Fcuatro-aplicaciones-de-ia-y-machine-learning-en-mexico%2F&psig=AOvVaw0EW0xGMC1fCGyDqxxa5-yX&ust=1684290756145000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJirzJPm-P4CFQAAAAAdAAAAABAE![image](https://github.com/melisatirabassi/prueba/assets/124107756/99eda7da-e82a-4ab3-8f37-589390ebf0de)
+
 
 
 # Tranformaciones
