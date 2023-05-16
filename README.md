@@ -22,7 +22,7 @@ Se eliminaron las columnas que no serán utilizadas, video,imdb_id,adult,origina
 Una vez realizadas estas tranformaciones se guardo el nuevo dataset en Dropbox como .csv
 
 
-#Fastapi
+  # Fastapi
 
 Con el dataset tranformado en Dropbox se creo una API con Fastapi. Con el archivo main.py ubicado en el repositorio labs1 se puede ejecutar la API cuyo endpoints son los siguientes:
 def peliculas_mes(mes): '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente''' return {'mes':mes, 'cantidad':respuesta}
@@ -33,13 +33,38 @@ def productoras(productora): '''Ingresas la productora, retornando la ganancia t
 def retorno(pelicula): '''Ingresas la pelicula, retornando la inversion, la ganancia, el retorno y el año en el que se lanzo''' return {'pelicula':pelicula, 'inversion':respuesta, 'ganacia':respuesta,'retorno':respuesta, 'anio':respuesta}
 
 
-#Render 
+  # Render 
 
 En la ubicacion del archivo main.py en la maquina local se creo un archivo Dockerfile (sin extension), un entorno virtual (myenv) donde se instalaron las librerias que utiliza la API (pandas, numpy, requests, uvicorn, Fastapi, joblib, etc) y luego se genero el archivo requirements.txt haciendo freeze de myenv.
 Los archivos Dockerfile, main.py y requirements.txt se cargan en el repositorio publico labs1. Se creo un usuario en render.com y se pocedio a crear una Web Service desde el repositorio publico de GitHub (Docker).
 https://movie-etl.onrender.com/docs
 
 
-#Modelo de Machine Learning
+# Modelo de Machine Learning
 
-Una vez realizadas las transformaciones
+Una vez realizadas las transformaciones en Google Colab se continuo con el codigo. Estas son algunos de los pasos implementados hasta obtener el modelo de ML:
+Se eliminaron las columnas que no utilizaron 
+Se eliminaron algunas filas nulas
+Se cambio el fomato a algunas de las columnas
+Se filtro el dataset transformado por las peliculas realizas en EEUU. Por falta de capacidad en la nube por utilizar la version gratuitano se pudo analizar el dataset completo
+A las numericas se les realizo una normalizacion con MinMax()
+A las columnas categoricas se le realizo OneHot Encoding (dummies)
+A las columnas de texto 'title' y 'overview' se las analizo con el paquete nltk. Por falta de capacidad en la nube por utilizar la version gratuita se procedio solo a analizar la columna 'title', 'overview' se elimino (se podria incluir en un futuro)
+Se concateno la matriz obtenida luego del procesamiento de la columna 'title' con nltk a la matriz obtenida de las transformaciones de las columnas numericas y categoricas
+Se genero un modelo de similitud con cosine_similarity
+Se guardo la matriz de similitud en Dropbox
+
+
+  # Fastapi
+
+Con el dataset tranformado y el modelo de ML en Dropbox se creo una API con Fastapi. Con el archivo main.py ubicado en el repositorio labs1_ML se puede ejecutar la API cuyo endpoint es el siguiente:  
+def recomendacion('titulo'): '''Ingresas un nombre de pelicula y te recomienda las similares en una lista de 5 valores''' return {'lista recomendada': respuesta}
+La lista que esta retornando la API es de 6 valores, ya que incluye la pelicula ingresada.
+
+
+  # Render
+  
+En la ubicacion del archivo main.py en la maquina local se creo un archivo Dockerfile (sin extension), un entorno virtual (myenv) donde se instalaron las librerias que utiliza la API (pandas, numpy, requests, uvicorn, Fastapi, joblib, etc) y luego se genero el archivo requirements.txt haciendo freeze de myenv.
+Los archivos Dockerfile, main.py y requirements.txt se cargan en el repositorio publico labs1_ML. Se creo un usuario en render.com y se pocedio a crear una Web Service desde el repositorio publico de GitHub (Docker). El deploy fallo por falta de memoria ya que se esta utilizando la version gratuita de 512MB.
+<img width="1411" alt="Captura de pantalla 2023-05-15 a la(s) 22 54 04" src="https://github.com/melisatirabassi/prueba/assets/124107756/e5c8b514-e69f-44f9-a2df-5f53af6c625c">
+
